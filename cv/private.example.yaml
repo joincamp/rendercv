@@ -1,0 +1,4 @@
+# Copy to private.yaml and fill in. private.yaml is gitignored.
+cv:
+  email: you@example.com
+  phone: "+15551234567"

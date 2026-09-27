@@ -1,0 +1,221 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
+#
+# Public CV — contact details (email, phone) live in private.yaml, which is
+# gitignored and merged into this file at render time by render.sh.
+cv:
+  name: Jonathan Camp
+  headline: Senior Infrastructure Engineer
+  location: Philadelphia, PA, USA
+  website: https://cv.joncamp.cloud/
+  social_networks:
+    - network: LinkedIn
+      username: joincamp
+  sections:
+    profile:
+      - Systems engineer with 15+ years building and operating distributed
+        systems in production on AWS and Azure, from service decomposition
+        and API boundaries to event-driven pipelines. I own my systems in
+        production, using telemetry and root-cause analysis to harden the
+        parts that show strain. Strong in Java, Go, and Python, with a track
+        record of learning whatever the problem calls for.
+      - '**Citizenship: United States. Requires employer sponsorship to work
+        in Iceland.**'
+    education:
+      - institution: Drexel University
+        area: Computer Engineering
+        degree: BS
+        location: Philadelphia, PA
+        date: 2008
+        highlights:
+          - College of Engineering, Pennoni Honors College
+      - institution: Amazon Web Services
+        area: AWS Certified Developer – Associate
+        date: 2017
+    experience:
+      - company: Prallax Consulting
+        position: Platform Engineer
+        start_date: 2024-11
+        end_date: present
+        summary: Platform engineering for healthcare technology under FedRAMP
+          Moderate and FIPS compliance requirements, from cloud
+          infrastructure to data pipelines and internal tooling.
+        highlights:
+          - Cut event volume 95% with a real-time change data capture
+            pipeline (Django signals, Kinesis Firehose, S3, Athena, dbt),
+            using incremental MERGE on Iceberg tables and DynamoDB-based
+            distributed locking to keep load off production APIs.
+          - Deployed a FIPS-compliant analytics platform (Apache Superset) in
+            AWS GovCloud with auto-scaling ECS Fargate, encrypted Aurora
+            PostgreSQL, automated secret rotation, and CloudWatch
+            observability, all provisioned with Terraform.
+          - Built a proof-of-concept AI operations platform bridging Claude
+            to enterprise monitoring via Model Context Protocol on a
+            serverless AWS stack (Lambda, AppSync, DynamoDB, Bedrock).
+          - Replaced manual workflows with production services built in Go,
+            Pocketbase, and React; operate Keycloak SSO infrastructure with
+            custom provisioning for downstream systems.
+      - company: Revcontent
+        position: Senior Software Developer
+        start_date: 2019-09
+        end_date: 2024-11
+        summary: Cross-functional development across distributed cloud
+          infrastructure, from reliability and cost work to customer-facing
+          features.
+        highlights:
+          - Led migration from a legacy Java monolith to microservices, with
+            Go services speaking gRPC over AWS App Mesh and EventBridge,
+            SNS, and SQS handling async work. Extracted services
+            incrementally along API boundaries; cloud costs fell by over 50%
+            by the time the monolith was retired.
+          - Designed Kinesis partitioning for the event pipeline behind
+            billions of daily content recommendations, keying streams by
+            ad-placement widget so widget×geo×device aggregate updaters
+            processed bounded, ordered state per shard while raw events
+            flowed intact into Snowflake. The aggregates fed advertiser
+            dashboards, bid pacing, and accounting.
+          - Ran low-latency serving state on a replicated, sharded Aerospike
+            cluster, with ElastiCache caching content-recommendation
+            results, and tuned CloudFront CDN caching to cut data-transfer
+            costs.
+          - Instrumented the microservices with Prometheus metrics, Grafana
+            dashboards, and OpenTelemetry traces into Datadog, then used
+            what the telemetry exposed to raise throughput and cut latency
+            and error rates.
+          - Load-tested services with Gatling and failure-tested in
+            production via live region shunting, rerouting traffic away from
+            a degraded region and verifying the system held under the
+            shifted load.
+          - Converted legacy infrastructure to infrastructure as code
+            (Terraform, CloudFormation); modernized a legacy PHP UI with
+            React microfrontends via Module Federation.
+      - company: Sylint
+        position: Senior Software Developer
+        start_date: 2018-09
+        end_date: 2019-09
+        summary: Security monitoring systems and incident response in a
+          managed security services environment.
+        highlights:
+          - Built out a distributed, event-driven security monitoring
+            system ingesting reports and data into dashboards for analysts,
+            working in Docker on Azure with ASP.NET Core, Angular, Solr,
+            and SQL Server.
+          - Conducted forensic analysis, root-cause analysis, remediation,
+            and reporting for client security breaches, malware attacks, and
+            vulnerabilities; supported expert-witness testimony in
+            intellectual property litigation.
+      - company: Adrizer
+        position: Lead Engineer
+        start_date: 2016-08
+        end_date: 2018-09
+        summary: Led a team of five building a serverless advertising
+          automation platform handling $50k–$100k in daily ad spend.
+        highlights:
+          - Re-architected the platform from an Apache Storm cluster to a
+            serverless AWS stack (Lambda, API Gateway, Step Functions,
+            DynamoDB), saving thousands monthly in operating costs.
+          - Provided 24/7 operational support with root-cause analysis and
+            systematic prevention of recurring issues. Hardened the platform
+            through penetration testing and architectural remediation.
+      - company: Ned Davis Research
+        position: Senior Software Developer
+        start_date: 2013-01
+        end_date: 2016-08
+        summary: Financial analysis platform built on a domain-specific
+          language for quantitative research, using Java, Groovy, Spring,
+          RESTful APIs, and automated testing.
+        highlights:
+          - Replaced an outsourced PDF report-generation system with an
+            in-house Java API, Angular frontend, and D3 visualizations,
+            saving tens of thousands annually with page-for-page parity.
+          - Championed Dynatrace APM across a distributed architecture after
+            identifying observability gaps, building the proof of concept
+            that won buy-in and training the team on investigative
+            workflows.
+      - company: McKesson Automation
+        position: Software Developer
+        start_date: 2008-08
+        end_date: 2012-12
+        summary: Agile development on medical automation systems in C#,
+          ASP.NET, VB.NET, and Java.
+        highlights:
+          - Developed on a team building a medication delivery network
+            platform (ASP.NET MVC, service-oriented architecture,
+            domain-driven design), with testing from unit through
+            performance and end-to-end.
+          - As Product Support Specialist II (2008–2011), diagnosed and
+            resolved complex production issues across multiple languages and
+            paradigms through root-cause analysis and reproduction test
+            cases.
+      - company: Drexel University – iSchool
+        position: PC Technician
+        start_date: 2005-04
+        end_date: 2008-02
+        summary: Maintained desktops, servers, and network services (Exchange,
+          Active Directory) for faculty and staff; supervised and trained a
+          10-person support team.
+    skills:
+      - label: Programming languages
+        details: Go, Python, Java, C#, JavaScript/TypeScript, PHP, SQL
+      - label: Distributed systems
+        details: Service decomposition and API boundaries, event-driven
+          architecture, gRPC, pub/sub (SNS, SQS, EventBridge), event
+          streaming (Kinesis), caching and replication strategies,
+          distributed locking, graceful degradation
+      - label: Cloud & operations
+        details: AWS (ECS Fargate, Lambda, DynamoDB, Aurora PostgreSQL, S3,
+          Athena, App Mesh, GovCloud), Azure, Docker, Kubernetes, 24/7
+          production operations
+      - label: Infrastructure as code & delivery
+        details: Terraform, OpenTofu, CloudFormation, ArgoCD, GitLab CI,
+          CircleCI, Jenkins, GitOps workflows
+      - label: Data stores & pipelines
+        details: DynamoDB, Aerospike, Aurora PostgreSQL, SQL Server,
+          ElastiCache, Snowflake, Kinesis, dbt, Apache Iceberg, Solr
+      - label: Telemetry & observability
+        details: Prometheus, Grafana, OpenTelemetry, Datadog, Dynatrace APM,
+          CloudWatch, Splunk, SIEM log aggregation
+      - label: Security & compliance
+        details: FedRAMP Moderate, FIPS, Keycloak SSO (OAuth, JWT),
+          penetration-test remediation, forensic analysis
+      - label: Personal infrastructure
+        details: Kubernetes cluster on DigitalOcean deployed via ArgoCD
+          GitOps, self-hosting family services (SSO, password management)
+    languages:
+      - label: English
+        details: Native
+      - label: Icelandic
+        details: Starting to learn
+design:
+  theme: engineeringresumes
+  section_titles:
+    space_above: 0.35cm
+    space_below: 0.22cm
+  sections:
+    space_between_regular_entries: 0.3cm
+  page:
+    size: a4
+    top_margin: 1.5cm
+    bottom_margin: 1.5cm
+    left_margin: 1.5cm
+    right_margin: 1.5cm
+locale:
+  language: english
+  month_abbreviations:
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec
+settings:
+  current_date: today
+  render_command:
+    dont_generate_html: true
+    dont_generate_png: true
+  pdf_title: Jonathan Camp - CV
