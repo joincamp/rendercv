@@ -43,6 +43,11 @@ with tempfile.TemporaryDirectory() as temp_dir:
             "rendercv",
             "--collect-all",
             "rendercv_fonts",
+            # rich loads its unicode width tables via importlib with computed
+            # module names (rich._unicode_data.unicode17-0-0), which PyInstaller's
+            # static analysis cannot detect.
+            "--collect-submodules",
+            "rich._unicode_data",
             "--distpath",
             "bin",
             str(rendercv_file),
