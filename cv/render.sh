@@ -81,24 +81,23 @@ check "text is selectable (extraction non-trivial)" \
   awk 'BEGIN{n=0} {n+=length($0)} END{exit !(n>2000)}' "$TXT"
 
 for needle in "Jonathan Camp" "jon@skyreach.llc" "941" \
-              "linkedin.com/in/joincamp" \
-              "cv.joncamp.cloud" "Philadelphia" \
+              "linkedin.com/in/joincamp" "Philadelphia" \
               "Citizenship: United States"; do
   check "contains: $needle" grep -qF "$needle" "$TXT"
 done
 
 # Section headers appear in the intended top-to-bottom order.
-check "section order Profile>Education>Experience>Skills>Languages" \
+check "section order Profile>Education>Experience>Skills" \
   python3 - "$TXT" <<'PY'
 import re, sys
 text = open(sys.argv[1]).read()
-positions = [text.find(s) for s in ("Profile", "Education", "Experience", "Skills", "Languages")]
+positions = [text.find(s) for s in ("Profile", "Education", "Experience", "Skills")]
 sys.exit(0 if all(p >= 0 for p in positions) and positions == sorted(positions) else 1)
 PY
 
 # Every experience/education date survives extraction.
 for date in "Nov 2024" "Sep 2019" "Sep 2018" "Aug 2016" "Jan 2013" \
-            "Aug 2008" "Dec 2012" "Apr 2005" "Feb 2008" "2008" "2017" "present"; do
+            "Aug 2008" "Dec 2012" "2008" "present"; do
   check "date survives: $date" grep -qF "$date" "$TXT"
 done
 

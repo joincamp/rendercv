@@ -4,22 +4,20 @@
 # gitignored and merged into this file at render time by render.sh.
 cv:
   name: Jonathan Camp
-  headline: Senior Infrastructure Engineer
+  headline: Infrastructure Engineer/Software Developer
   location: Philadelphia, PA, USA
-  website: https://cv.joncamp.cloud/
+  website: https://cv.joncamp.cloud
   social_networks:
     - network: LinkedIn
       username: joincamp
   sections:
     profile:
-      - Systems engineer with 15+ years building and operating distributed
-        systems in production on AWS and Azure, from service decomposition
-        and API boundaries to event-driven pipelines. I own my systems in
+      - Infrastructure Engineer/Software Developer with 18 years building and operating distributed
+        systems in production on AWS, Azure, and on-premises data centers. Decomposing services, drawing API boundaries, building event-driven pipelines; I help organizations scale their systems without a rewrite. I own my systems in
         production, using telemetry and root-cause analysis to harden the
-        parts that show strain. Strong in Java, Go, and Python, with a track
+        parts that show strain. Strong in Python, Java, and Go, with a track
         record of learning whatever the problem calls for.
-      - '**Citizenship: United States. Requires employer sponsorship to work
-        in Iceland.**'
+      - '**Citizenship: United States. Relocating to Reykjavík; work permit through the expert-knowledge route, employer-sponsored.**'
     education:
       - institution: Drexel University
         area: Computer Engineering
@@ -28,9 +26,6 @@ cv:
         date: 2008
         highlights:
           - College of Engineering, Pennoni Honors College
-      - institution: Amazon Web Services
-        area: AWS Certified Developer – Associate
-        date: 2017
     experience:
       - company: Prallax Consulting
         position: Platform Engineer
@@ -41,15 +36,15 @@ cv:
           infrastructure to data pipelines and internal tooling.
         highlights:
           - Cut event volume 95% with a real-time change data capture
-            pipeline (Django signals, Kinesis Firehose, S3, Athena, dbt),
-            using incremental MERGE on Iceberg tables and DynamoDB-based
-            distributed locking to keep load off production APIs.
+            pipeline (Django signals, Kinesis Firehose, S3, Athena, dbt)
+            using incremental MERGE on Iceberg tables, keeping load off
+            production APIs.
           - Deployed a FIPS-compliant analytics platform (Apache Superset) in
-            AWS GovCloud with auto-scaling ECS Fargate, encrypted Aurora
-            PostgreSQL, automated secret rotation, and CloudWatch
-            observability, all provisioned with Terraform.
+            AWS GovCloud with ECS Fargate behind load balancers, serverless Aurora PostgreSQL, automated
+            secret rotation, custom SSO integration/user provisioning, and CloudWatch observability, all provisioned
+            with Terraform.
           - Built a proof-of-concept AI operations platform bridging Claude
-            to enterprise monitoring via Model Context Protocol on a
+            to enterprise monitoring via MCP on a
             serverless AWS stack (Lambda, AppSync, DynamoDB, Bedrock).
           - Replaced manual workflows with production services built in Go,
             Pocketbase, and React; operate Keycloak SSO infrastructure with
@@ -67,16 +62,24 @@ cv:
             SNS, and SQS handling async work. Extracted services
             incrementally along API boundaries; cloud costs fell by over 50%
             by the time the monolith was retired.
-          - Designed Kinesis partitioning for the event pipeline behind
-            billions of daily content recommendations, keying streams by
-            ad-placement widget so widget×geo×device aggregate updaters
-            processed bounded, ordered state per shard while raw events
-            flowed intact into Snowflake. The aggregates fed advertiser
-            dashboards, bid pacing, and accounting.
+          - Maintained and optimized the widget-keyed Kinesis partitioning
+            behind billions of daily content recommendations, keeping
+            widget×geo×device aggregate updaters on bounded, ordered state
+            per shard while raw events flowed intact into Snowflake; the
+            aggregates fed advertiser dashboards, bid pacing, and
+            accounting.
+          - Migrated the event pipeline from Kinesis to Kafka for cost and
+            operational ownership, after managed-service failures left us with no remediation paths within budget. Moving consumers
+            onto Airflow made the data flow visible, down to individual
+            latencies, side effects, and where things stalled.
           - Ran low-latency serving state on a replicated, sharded Aerospike
             cluster, with ElastiCache caching content-recommendation
             results, and tuned CloudFront CDN caching to cut data-transfer
             costs.
+          - Implemented distributed locking on the ad-delivery path with
+            DynamoDB conditional writes, so concurrent spenders could not
+            push campaigns past budget and a stale lock holder could not
+            commit over newer state.
           - Instrumented the microservices with Prometheus metrics, Grafana
             dashboards, and OpenTelemetry traces into Datadog, then used
             what the telemetry exposed to raise throughput and cut latency
@@ -113,9 +116,11 @@ cv:
           - Re-architected the platform from an Apache Storm cluster to a
             serverless AWS stack (Lambda, API Gateway, Step Functions,
             DynamoDB), saving thousands monthly in operating costs.
+          - Implemented immutable infrastructure with CloudFormation, Secrets
+            Manager, and CircleCI deployment automation, enabling identical
+            staging, QA, and production environments.
           - Provided 24/7 operational support with root-cause analysis and
-            systematic prevention of recurring issues. Hardened the platform
-            through penetration testing and architectural remediation.
+            systematic prevention of recurring issues.
       - company: Ned Davis Research
         position: Senior Software Developer
         start_date: 2013-01
@@ -131,6 +136,8 @@ cv:
             identifying observability gaps, building the proof of concept
             that won buy-in and training the team on investigative
             workflows.
+          - Collaborated with quantitative analysts to implement
+            mathematical models using appropriate software design patterns.
       - company: McKesson Automation
         position: Software Developer
         start_date: 2008-08
@@ -138,7 +145,7 @@ cv:
         summary: Agile development on medical automation systems in C#,
           ASP.NET, VB.NET, and Java.
         highlights:
-          - Developed on a team building a medication delivery network
+          - Developed services on a team building a medication delivery network
             platform (ASP.NET MVC, service-oriented architecture,
             domain-driven design), with testing from unit through
             performance and end-to-end.
@@ -146,31 +153,25 @@ cv:
             resolved complex production issues across multiple languages and
             paradigms through root-cause analysis and reproduction test
             cases.
-      - company: Drexel University – iSchool
-        position: PC Technician
-        start_date: 2005-04
-        end_date: 2008-02
-        summary: Maintained desktops, servers, and network services (Exchange,
-          Active Directory) for faculty and staff; supervised and trained a
-          10-person support team.
     skills:
       - label: Programming languages
-        details: Go, Python, Java, C#, JavaScript/TypeScript, PHP, SQL
+        details: Python, Java, Go, C#, JavaScript/TypeScript, PHP, SQL
       - label: Distributed systems
         details: Service decomposition and API boundaries, event-driven
           architecture, gRPC, pub/sub (SNS, SQS, EventBridge), event
-          streaming (Kinesis), caching and replication strategies,
+          streaming (Kafka, Kinesis), caching and replication strategies,
           distributed locking, graceful degradation
       - label: Cloud & operations
         details: AWS (ECS Fargate, Lambda, DynamoDB, Aurora PostgreSQL, S3,
-          Athena, App Mesh, GovCloud), Azure, Docker, Kubernetes, 24/7
-          production operations
+          Athena, App Mesh, GovCloud), Azure, Docker, 24/7 production
+          operations
       - label: Infrastructure as code & delivery
-        details: Terraform, OpenTofu, CloudFormation, ArgoCD, GitLab CI,
+        details: Terraform, OpenTofu, CloudFormation, GitLab CI,
           CircleCI, Jenkins, GitOps workflows
       - label: Data stores & pipelines
         details: DynamoDB, Aerospike, Aurora PostgreSQL, SQL Server,
-          ElastiCache, Snowflake, Kinesis, dbt, Apache Iceberg, Solr
+          ElastiCache, Snowflake, Kafka, Kinesis, Airflow, dbt, Apache
+          Iceberg, Solr
       - label: Telemetry & observability
         details: Prometheus, Grafana, OpenTelemetry, Datadog, Dynatrace APM,
           CloudWatch, Splunk, SIEM log aggregation
@@ -180,20 +181,21 @@ cv:
       - label: Personal infrastructure
         details: Kubernetes cluster on DigitalOcean deployed via ArgoCD
           GitOps, self-hosting family services (SSO, password management)
-    languages:
-      - label: English
-        details: Native
-      - label: Icelandic
-        details: Starting to learn
 design:
   theme: engineeringresumes
+  header:
+    connections:
+      phone_number_format: international
   section_titles:
     space_above: 0.35cm
-    space_below: 0.22cm
+    space_below: 0.35cm
   sections:
     space_between_regular_entries: 0.3cm
+  entries:
+    allow_page_break: true
   page:
     size: a4
+    show_top_note: false
     top_margin: 1.5cm
     bottom_margin: 1.5cm
     left_margin: 1.5cm
